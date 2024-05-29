@@ -1,0 +1,160 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.order {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-info span {
+    margin-bottom: 5px;
+}
+
+.order-info span:first-child {
+    font-weight: bold;
+}
+
+.order-actions {
+    display: flex;
+}
+
+.order-actions a {
+    text-decoration: none;
+    color: #333;
+}
+
+.order-actions button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    /*background-color: #f0f0f0;*/
+    cursor: pointer;
+}
+
+.order-actions button:hover {
+    background-color: #e0e0e0;
+}
+
+.ticket-type {
+    display: inline-block;
+    padding: 2px 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    font-size: 14px;
+}
+
+.ticket-type.movie {
+    background-color: #f0f8ff;
+}
+
+.ticket-type.concert {
+    background-color: #f5f5dc;
+}
+
+.ticket-type.sport {
+    background-color: #e6e6fa;
+}
+
+.ticket-type.exhibition {
+    background-color: #f0fff0;
+}
+
+.order-status {
+    display: inline-block;
+    padding: 2px 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    font-size: 14px;
+}
+
+.order-status.paid {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.order-status.unpaid {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.pay-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.pay-button:hover {
+    background-color: #0069d9;
+}
+
+.comment-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #28a745;
+    color: #fff;
+    cursor: pointer;
+}
+
+.comment-button:hover {
+    background-color: #218838;
+}
+
+.comment-form {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.comment-form textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+.comment-form button {
+    float: right;
+    padding: 5px 10px;
+    border: none;
+    background-color: #28a745;
+    color: #fff;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background-color: #218838;
+}

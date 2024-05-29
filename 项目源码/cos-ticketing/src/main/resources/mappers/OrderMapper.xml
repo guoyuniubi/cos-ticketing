@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baidu.dao.OrderMapper">
+
+    <resultMap id="orderMap" type="Order">
+        <id column="oid" property="oid"/>
+        <result column="status" property="status"/>
+        <result column="totalPrice" property="totalPrice"/>
+        <result column="oTime" property="oTime"/>
+        <result column="oNum" property="oNum"/>
+        <result column="uid" property="uid"/>
+        <result column="tid" property="tid"/>
+        <association property="exhibition" javaType="Exhibition">
+            <id column="tid" property="tid"/>
+            <result column="eName" property="eName"/>
+        </association>
+    </resultMap>
+
+    <select id="getAllOrderByUserId" resultMap="orderMap">
+    select `order`.*,eName from ticket,exhibition,user,`order`
+    where ticket.tid=`order`.tid
+    and exhibition.tid=ticket.tid and user.uid=`order`.uid and user.uid=#{uid}
+    </select>
+
+
+    
+</mapper>

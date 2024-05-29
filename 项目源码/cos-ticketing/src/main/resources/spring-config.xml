@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 引入db.properties -->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+    <!--扫描注解所在的包-->
+    <context:component-scan base-package="com.baidu.service.impl"/>
+
+    <!--配置数据源-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${user}"/>
+        <property name="password" value="${password}"/>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <!--配置事务管理器-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--配置引用数据源-->
+    </bean>
+
+
+    <!--注册事务管理器-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+
+    <!--配置sqlSessionFactory工厂的bean-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--引用数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--配置mybatis的全局配置文件-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--配置加载dao接口的映射文件-->
+        <property name="mapperLocations" value="classpath:/mappers/*.xml"/>
+    </bean>
+
+    <!--配置:MapperScannerConfigurer
+        作用:将dao接口配置成bean,bean默认id为接口名首字母小写,不用写AccountDaoImpl
+    -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--配置SqlSessionFactory工厂-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!--配置dao接口所在包-->
+        <property name="basePackage" value="com.baidu.dao"/>
+    </bean>
+
+
+
+</beans>

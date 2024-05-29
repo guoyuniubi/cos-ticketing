@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baidu.dao.ExhibitionMapper">
+
+    <resultMap id="exhibitionMap" type="Exhibition">
+        <id property="eid" column="eid"/>
+        <result property="eName" column="eName"/>
+        <result property="eTime" column="eTime"/>
+        <result property="ePlace" column="ePlace"/>
+        <result property="eIntroduce" column="eIntroduce"/>
+        <result property="eImgName" column="eImgName"/>
+        <result property="tid" column="tid"/>
+        <association property="ticket" javaType="ticket">
+            <id property="tid" column="tid"/>
+            <result property="tSurplus" column="tSurplus"/>
+            <result property="tPrice" column="tPrice"/>
+        </association>
+    </resultMap>
+
+
+    <select id="getAllExhibition" resultMap="exhibitionMap">
+        select exhibition.*,tSurplus,tPrice from exhibition join ticket where exhibition.tid=ticket.tid;
+    </select>
+
+
+    
+    <select id="getExhibitionByLike" resultMap="exhibitionMap">
+        select exhibition.*,tSurplus,tPrice from exhibition join ticket where exhibition.tid=ticket.tid and eName like CONCAT('%',#{input},'%');
+    </select>
+</mapper>

@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f0e0;
+}
+.container {
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #c0e0c0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+.ticket {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.ticket-name {
+    flex: 1;
+    font-size: 18px;
+    color: #666;
+}
+.ticket-price {
+    flex: 0;
+    font-size: 18px;
+    color: #666;
+}
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.quantity-label {
+    flex: 0;
+    font-size: 18px;
+    color: #666;
+    margin-right: 10px;
+}
+.quantity-input {
+    flex: 1;
+    font-size: 18px;
+    color: #333;
+    border: 1px solid #aaa;
+    padding: 5px 10px;
+    outline: none;
+}
+.total {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.total-label {
+    flex: 0;
+    font-size: 18px;
+    color: #666;
+    margin-right: 10px;
+}
+.total-value {
+    flex: 1;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+.button {
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    color: white;
+    background-color: #008000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    outline: none;
+}
